@@ -149,3 +149,10 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # my own personal aliases :D
 alias configgy="nvim ~/.zshrc"
+
+# bun completions
+[ -s "/Users/tboyd/.bun/_bun" ] && source "/Users/tboyd/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
