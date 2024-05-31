@@ -9,29 +9,29 @@ import = [
 
 # Basic Window Config
 [window]
-padding.x = 12
-padding.y = 12
-decorations = "Full"
+    padding.x = 12
+    padding.y = 12
+    decorations = "Full"
 
 # Default font
 [font]
-normal.family = "GeistMono Nerd Font"
-size = 16.0
+    normal.family = "GeistMono Nerd Font"
+    size = 16.0
 
 # Cursor settings
 [cursor.style]
-shape = "Block"
-blinking = "Always"
+    shape = "Block"
+    blinking = "Always"
 
 # Vim cursor settings -- this is not erroring, but is not working
 [cursor.vi_mode_style]
-shape = "Block"
-blinking = "Always"
+    shape = "Block"
+    blinking = "Always"
 
 # Mouse settings
 [mouse]
-hide_when_typing = true
+    hide_when_typing = true
 
 # Needed for colors ands stuff
 [env]
-TERM = "xterm-256color"
+    TERM = "xterm-256color"
