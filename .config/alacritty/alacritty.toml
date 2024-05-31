@@ -1,3 +1,12 @@
+# Catpuccin Colors
+import = [
+  # uncomment the flavour you want below:
+  #"~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  #"~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
 # Basic Window Config
 [window]
 padding.x = 12
@@ -8,37 +17,6 @@ decorations = "Full"
 [font]
 normal.family = "GeistMono Nerd Font"
 size = 16.0
-
-# Default colors
-[colors.primary]
-background = '#171d23'
-foreground = '#ffffff'
-
-# Cursor colors
-[colors.cursor]
-text   = '#fafafa'
-cursor = '#008b94'
-
-# Normal colors
-[colors.normal]
-black   = '#333f4a'
-red     = '#d95468'
-green   = '#8bd49c'
-blue    = '#539afc'
-magenta = '#b62d65'
-cyan    = '#70e1e8'
-white   = '#b7c5d3'
-
-# Bright colors
-[colors.bright]
-black   = '#41505e'
-red     = '#d95468'
-green   = '#8bd49c'
-yellow  = '#ebbf83'
-blue    = '#5ec4ff'
-magenta = '#e27e8d'
-cyan    = '#70e1e8'
-white   = '#ffffff'
 
 # Cursor settings
 [cursor.style]
@@ -53,3 +31,7 @@ blinking = "Always"
 # Mouse settings
 [mouse]
 hide_when_typing = true
+
+# Needed for colors ands stuff
+[env]
+TERM = "xterm-256color"

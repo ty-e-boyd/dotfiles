@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@yaegassy/coc-volar": ">=0.35.5",
+    "coc-tsserver": ">=2.2.0"
+  }
+}
