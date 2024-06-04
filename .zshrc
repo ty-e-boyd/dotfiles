@@ -144,6 +144,9 @@ eval $(thefuck --alias fk)
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+# bat isntead
+alias cat="bat"
+
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
