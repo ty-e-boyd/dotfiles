@@ -12,6 +12,7 @@ import = [
     padding.x = 12
     padding.y = 12
     decorations = "Full"
+    opacity = 0.9
 
 # Default font
 [font]
