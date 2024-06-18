@@ -48,6 +48,11 @@ return {
 			lspconfig.svelte.setup({
 				capabilities = capabilities,
 			})
+
+			-- docker
+			lspconfig.dockerls.setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 }
