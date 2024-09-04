@@ -32,6 +32,15 @@ return {
             -- typescript/javascript
             lspconfig.tsserver.setup({
                 capabilities = capabilities,
+                root_dir = lspconfig.util.root_pattern("package.json"),
+                filetypes = {
+                    "typescript",
+                    "typescriptreact",
+                    "typescript.tsx",
+                    "javascript",
+                    "javascriptreact",
+                    "javascript.jsx",
+                },
             })
 
             -- tailwindcss
@@ -57,6 +66,12 @@ return {
             -- zig
             lspconfig.zls.setup({
                 capabilities = capabilities,
+            })
+
+            -- deno
+            lspconfig.denols.setup({
+                capabilities = capabilities,
+                root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
             })
         end,
     },
