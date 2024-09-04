@@ -23,6 +23,8 @@ export PATH="$PATH:/Users/tboyd/Development/toolkit/xpdf-tools-4.05/binARM"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 # go bin
 export PATH="$PATH":"$HOME/go/bin"
+# Deno
+export PATH="$PATH":"$HOME/.deno/bin"
 
 # NVIM
 export NVM_DIR="$HOME/.nvm"
