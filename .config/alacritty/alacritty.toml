@@ -16,8 +16,8 @@ import = [
 
 # Default font
 [font]
-    normal.family = "GeistMono Nerd Font"
-    size = 16.0
+    normal.family = "GohuFont uni14 Nerd Font Mono"
+    size = 17.0
 
 # Cursor settings
 [cursor.style]
