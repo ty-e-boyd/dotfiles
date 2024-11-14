@@ -1,16 +1,4 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# Source OMP
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  # eval "$(oh-my-posh init zsh)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/jandedobbeleer.omp.json)"
-  eval "$(oh-my-posh init zsh --config ~/.config/omp/tylers.toml)"
-fi
 
 # Export Paths
 # Flutter
@@ -25,6 +13,8 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/go/bin"
 # Deno
 export PATH="$PATH":"$HOME/.deno/bin"
+# Brew
+export PATH=/opt/homebrew/bin:$PATH
 
 # NVIM
 export NVM_DIR="$HOME/.nvm"
@@ -62,3 +52,8 @@ alias configgy="nvim ~/.zshrc"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Source OMP
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ~/.config/omp/tylers.toml)"
+fi
