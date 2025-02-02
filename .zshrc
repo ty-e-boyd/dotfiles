@@ -15,6 +15,8 @@ export PATH="$PATH":"$HOME/go/bin"
 export PATH="$PATH":"$HOME/.deno/bin"
 # Brew
 export PATH=/opt/homebrew/bin:$PATH
+# Zig SOURCE BUILD
+export PATH="$PATH":"$HOME/zig/build/stage3/bin"
 
 # NVIM
 export NVM_DIR="$HOME/.nvm"
