@@ -67,6 +67,7 @@ return {
             lspconfig.zls.setup({
                 capabilities = capabilities,
             })
+            vim.g.zig_fmt_autosave = 0
 
             -- deno
             lspconfig.denols.setup({
