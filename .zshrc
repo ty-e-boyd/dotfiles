@@ -3,8 +3,6 @@ plugins=(git)
 # Export Paths
 # Flutter
 export PATH="$PATH:/Users/tboyd/Development/toolkit/flutter/bin"
-# Zig
-export PATH="$PATH:/Users/tboyd/Development/toolkit/zig-0.12.0-dev/ig"
 # Xpdf
 export PATH="$PATH:/Users/tboyd/Development/toolkit/xpdf-tools-4.05/binARM"
 # flutterfire
@@ -15,8 +13,6 @@ export PATH="$PATH":"$HOME/go/bin"
 export PATH="$PATH":"$HOME/.deno/bin"
 # Brew
 export PATH=/opt/homebrew/bin:$PATH
-# Zig SOURCE BUILD
-export PATH="$PATH":"$HOME/zig/build/stage3/bin"
 
 # NVIM
 export NVM_DIR="$HOME/.nvm"
@@ -27,6 +23,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # fzf
 eval "$(fzf --zsh)"
+
+# postgres boi
+export PATH="/Applications/Postgres.app/Contents/Versions/17/bin:$PATH"
+
+# my tmux setup for resto dev
+alias restoman="~/resto_dev.sh"
+alias donewerk="tmux kill-server"
 
 # eza
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user"
@@ -41,6 +44,9 @@ alias cd="z"
 
 # bat isntead
 alias cat="bat"
+
+# btop instead
+alias htop="btop"
 
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
