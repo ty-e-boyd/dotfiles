@@ -13,6 +13,8 @@ export PATH="$PATH":"$HOME/go/bin"
 export PATH="$PATH":"$HOME/.deno/bin"
 # Brew
 export PATH=/opt/homebrew/bin:$PATH
+# Gemini
+export GOOGLE_CLOUD_PROJECT="using-gemini-cli"
 
 # NVIM
 export NVM_DIR="$HOME/.nvm"
@@ -30,6 +32,9 @@ export PATH="/Applications/Postgres.app/Contents/Versions/17/bin:$PATH"
 # my tmux setup for resto dev
 alias restoman="~/resto_dev.sh"
 alias donewerk="tmux kill-server"
+
+# the pomodoro cli
+alias getitboy="~/getitboy.sh"
 
 # eza
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user"
@@ -65,3 +70,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ~/.config/omp/tylers.toml)"
 fi
+eval "$(~/.local/bin/mise activate)"

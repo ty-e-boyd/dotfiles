@@ -48,6 +48,17 @@ return {
                 capabilities = capabilities,
             })
 
+            -- ruby/rails - solargraph
+            lspconfig.solargraph.setup({
+                capabilities = capabilities,
+                settings = {
+                    solargraph = {
+                        diagnostics = true
+                    }
+                }
+            })
+
+
             -- gopls
             lspconfig.gopls.setup({
                 capabilities = capabilities,
