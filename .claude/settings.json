@@ -41,7 +41,16 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/tylerboyd/.dotfiles/bin/claude-status-hook PreToolUse",
+            "command": "/Users/tylerboyd/.dotfiles/bin/claude-status-hook PreToolUse"
+          }
+        ]
+      },
+      {
+        "tool": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "source ~/.zshrc 2>/dev/null || true"
           }
         ]
       }

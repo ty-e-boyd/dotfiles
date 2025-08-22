@@ -209,10 +209,10 @@ Collect during analysis:
 
 ## Output
 
-### Primary Spec
+### Primary Spec (Mandatory, create directory if not there)
 Save to: `docs/specs/{feature-name}-spec.md`
 
-### Supporting Artifacts
+### Supporting Artifacts (Mandatory if applicable)
 - `docs/specs/{feature-name}-api.yaml` - OpenAPI spec
 - `docs/specs/{feature-name}-db.sql` - Database changes
 - `docs/specs/{feature-name}-tests.md` - Test plan

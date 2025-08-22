@@ -40,12 +40,22 @@ alias getitboy="~/getitboy.sh"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user"
 
 # thef**k
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
+if [[ "$ZSH_NAME" == "zsh" ]] && command -v thefuck >/dev/null 2>&1; then
+    eval $(thefuck --alias) 2>/dev/null || true
+    eval $(thefuck --alias fk) 2>/dev/null || true
+fi
 
 # zoxide
-eval "$(zoxide init zsh)"
-alias cd="z"
+if [[ "$ZSH_NAME" == "zsh" ]] && command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)" 2>/dev/null
+    # Skip cd alias entirely in Claude Code to avoid zoxide issues  
+    if [[ -z "$CLAUDECODE" ]]; then
+        # Only alias cd=z if the zoxide function is actually available
+        if type __zoxide_z >/dev/null 2>&1; then
+            alias cd="z"
+        fi
+    fi
+fi
 
 # bat isntead
 alias cat="bat"
@@ -54,7 +64,9 @@ alias cat="bat"
 alias htop="btop"
 
 # zsh-autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ "$ZSH_NAME" == "zsh" ]] && [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null || true
+fi
 
 # my own personal aliases :D
 alias configgy="nvim ~/.zshrc"
@@ -67,7 +79,13 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Source OMP
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ~/.config/omp/tylers.toml)"
+if [[ "$ZSH_NAME" == "zsh" ]] && [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ~/.config/omp/tylers.toml)" 2>/dev/null || true
 fi
-eval "$(~/.local/bin/mise activate)"
+
+# mise
+if [[ "$ZSH_NAME" == "zsh" ]] && command -v ~/.local/bin/mise >/dev/null 2>&1; then
+    eval "$(~/.local/bin/mise activate)" 2>/dev/null || true
+fi
+
+alias claude="/Users/tylerboyd/.claude/local/claude"
