@@ -107,6 +107,14 @@ interface FeatureResponse { ... }
 - [ ] E2E tests for critical paths
 - [ ] Performance benchmarks met
 - [ ] Security review completed
+- [ ] CodeRabbit CLI review passes with no critical issues
+- [ ] Any CodeRabbit disagreements resolved via "ghostrider" protocol
+
+#### Blue Project Tracking
+- [ ] Major tasks created in Blue "Scoped and Ready" list
+- [ ] Tasks moved to "Development" when implementation starts
+- [ ] Tasks moved to "Testing" when CodeRabbit review begins
+- [ ] Tasks moved to "Done" when validation complete
 
 ### 4. Risk Analysis
 
@@ -159,7 +167,59 @@ describe('Feature', () => {
 - [ ] Accessibility (keyboard nav, screen readers)
 - [ ] Performance under load
 
-### 7. Rollout Plan
+#### CodeRabbit Integration Testing
+- [ ] Run `coderabbit review --plain` on all implementation code
+- [ ] Address all security, performance, and type safety issues
+- [ ] Document any "ghostrider" disagreements with reasoning
+- [ ] Re-run CodeRabbit after fixes to confirm resolution
+- [ ] Include CodeRabbit final report in implementation documentation
+
+### 7. Blue Project Management
+
+#### Automated Task Creation
+During spec generation, major implementation tasks will be automatically created in Blue project management system:
+
+**Blue CLI Location**: `/Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/`
+**Engineering Project ID**: `cm8dawh1r29yqra2llk6ql5pm`
+
+#### Task Lifecycle
+1. **Scoped and Ready** (`cm98t5isa0tbsrx1yr2amtnwh`): Well-defined tasks ready for implementation
+2. **Development** (`cm8dcodkf2eq1ra2l7oplkggy`): Tasks currently being coded
+3. **Testing** (`cm8dcp3dw2erjra2l3jyy3vjx`): Tasks undergoing CodeRabbit review and validation
+4. **Done** (`cm8dcqfim2ev3ra2lu1c9umbj`): Completed and verified tasks
+
+#### Automated Task Management
+Claude will automatically:
+- Create Blue records for major tasks during spec implementation
+- Move tasks between lists as development progresses
+- Update task status without explicit user requests
+- Mark tasks complete after successful CodeRabbit review
+
+#### Task Creation Commands
+**CRITICAL**: Blue CLI is NOT installed globally - all commands MUST be run from the Blue directory.
+
+```bash
+# STEP 1: Check for existing tasks before creating (prevent duplicates)
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . read-records -project cm8dawh1r29yqra2llk6ql5pm -simple | grep -i "TASK_KEYWORDS"
+
+# STEP 2: Create task in Scoped and Ready (only if not already exists)
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . create-record -project cm8dawh1r29yqra2llk6ql5pm -list cm98t5isa0tbsrx1yr2amtnwh -title "TASK_TITLE" -description "DETAILED_DESCRIPTION" -simple
+
+# STEP 3: Move task through workflow
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . update-record -record RECORD_ID -move-to-list cm8dcodkf2eq1ra2l7oplkggy  # Development
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . update-record -record RECORD_ID -move-to-list cm8dcp3dw2erjra2l3jyy3vjx  # Testing
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . update-record -record RECORD_ID -move-to-list cm8dcqfim2ev3ra2lu1c9umbj  # Done
+```
+
+#### Major Tasks for Blue Tracking
+Based on feature complexity, major tasks typically include:
+- Database schema implementation
+- API endpoint development
+- Frontend component creation
+- Integration testing
+- CodeRabbit review and fixes
+
+### 8. Rollout Plan
 
 #### Phase 1: Internal Testing
 - Deploy behind feature flag
@@ -206,6 +266,12 @@ Collect during analysis:
 - [ ] Technical decisions needed
 - [ ] Architecture review required
 - [ ] Performance optimization approach
+
+### CodeRabbit Validation Requirements
+- All implementation code must pass CodeRabbit review
+- Critical issues (security, performance, types) are non-negotiable fixes
+- Document any disagreements using "ghostrider" protocol
+- Include final CodeRabbit report in feature documentation
 
 ## Output
 

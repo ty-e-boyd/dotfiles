@@ -21,6 +21,130 @@ Avoid simply agreeing with my points or taking my conclusions at face value. I w
 
 I (the prompter) am the lead developer. I have five years of coding experience, and am very proficient in JavaScript, and moderately proficient in Go. Also, please consider that I am the only onsite human developer at the company. I have to be a jack of all trades, master of none, because I am designing, creating, testing, and deploying. Just consider this as a part of our cooperation and collaboration. This ties into the above "avoid simply agreeing with my points", because it's possible I don't fully understand a topic or issue. If you are fairly confident that you are right, and I am not seeing something all the way through, please use the code phrase "ghostrider", indicating to me that you are at a 9 or 10 out of 10 on the confidence scale that you have a better understanding of something than I do. I may still overrule you, as I am the senior, but this will make me double check my thinking.
 
+## CodeRabbit Integration Workflow
+
+You have access to the CodeRabbitAI CLI tool (available as `coderabbit` or `cr`). This tool is mandatory for all code changes.
+
+### When to Use CodeRabbit
+- **Always**: After writing any code (functions, components, fixes, features)
+- **Always**: Before marking implementation tasks as complete
+- **Always**: When implementing features from generate-spec specifications
+
+### CodeRabbit Review Process
+1. **Run Review**: Execute `coderabbit review --plain` after code changes
+2. **Analyze Feedback**: Evaluate all suggestions categorically:
+   - **Security issues**: Always fix immediately
+   - **Performance problems**: Always fix immediately
+   - **Type safety issues**: Always fix immediately
+   - **Code style/formatting**: Fix if aligns with project conventions
+   - **Architecture suggestions**: Apply if they improve maintainability
+   - **Nitpicks**: Use judgment - fix if trivial, ignore if subjective
+
+3. **Fix Major Issues**: Address all critical feedback before proceeding
+4. **Signal Disagreement**: Use "ghostrider" if you believe CodeRabbit is wrong at 9-10/10 confidence
+5. **Re-run After Fixes**: Always re-run CodeRabbit after making changes
+
+### CodeRabbit Command Usage
+```bash
+# Standard review of all changes
+coderabbit review --plain
+
+# Review only uncommitted changes
+coderabbit review --type uncommitted --plain
+
+# Include custom instructions
+coderabbit review --config /Users/tylerboyd/.claude/CLAUDE.md --plain
+```
+
+### Integration with Development Flow
+- CodeRabbit review is required before any task completion
+- Large features from generate-spec must pass CodeRabbit review
+- Use the "ghostrider" protocol for CodeRabbit disagreements
+- Never skip CodeRabbit for "small" changes - consistency matters
+
+## Blue Project Management Integration
+
+### Blue CLI Location and Configuration
+**Blue CLI Path**: `/Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/`
+**Engineering Project ID**: `cm8dawh1r29yqra2llk6ql5pm`
+
+### Blue Task Lists and IDs
+- **Backlog**: `cm8dcnm3y2emjra2lryv68oyx`
+- **Planning**: `cm8dcns5p2endra2ly11rzrgi`
+- **Scoped and Ready**: `cm98t5isa0tbsrx1yr2amtnwh`
+- **Blocked**: `cm8dcnyvn2enora2lsftilsuj`
+- **Development**: `cm8dcodkf2eq1ra2l7oplkggy`
+- **Testing**: `cm8dcp3dw2erjra2l3jyy3vjx`
+- **Done**: `cm8dcqfim2ev3ra2lu1c9umbj`
+
+### Automated Task Management Workflow
+**Proactive Behavior**: Always manage Blue tasks without user prompting during development work.
+
+#### When to Create Blue Tasks
+- After generate-spec creates major features (auto-create tasks in "Scoped and Ready")
+- When implementing features with 3+ distinct implementation steps
+- For any work that benefits from progress tracking and visibility
+
+#### Task Movement Triggers
+1. **Start Implementation**: Move task from "Scoped and Ready" → "Development"
+2. **Code Complete**: Move task from "Development" → "Testing"
+3. **CodeRabbit Review**: Keep in "Testing" during review process
+4. **Review Complete**: Move task from "Testing" → "Done" after CodeRabbit passes
+
+#### Blue CLI Commands for Task Management
+**IMPORTANT**: Blue CLI is NOT installed globally - all commands must be run from the Blue directory.
+
+```bash
+# Check for existing tasks before creating (prevent duplicates)
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . read-records -project cm8dawh1r29yqra2llk6ql5pm -simple | grep -i "TASK_TITLE_KEYWORDS"
+
+# Create task in Scoped and Ready (only if not already exists)
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . create-record -project cm8dawh1r29yqra2llk6ql5pm -list cm98t5isa0tbsrx1yr2amtnwh -title "TASK_TITLE" -description "DETAILED_DESCRIPTION" -simple
+
+# Move task through development workflow
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . update-record -record RECORD_ID -move-to-list cm8dcodkf2eq1ra2l7oplkggy  # → Development
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . update-record -record RECORD_ID -move-to-list cm8dcp3dw2erjra2l3jyy3vjx  # → Testing
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . update-record -record RECORD_ID -move-to-list cm8dcqfim2ev3ra2lu1c9umbj  # → Done
+
+# Move to Blocked if dependencies are missing
+cd /Users/tylerboyd/Development/restoration_apparel_company/blue/demo-builder-master/ && go run . update-record -record RECORD_ID -move-to-list cm8dcnyvn2enora2lsftilsuj  # → Blocked
+```
+
+### Integration with Spec-Driven Development
+- **generate-spec**: Auto-create Blue tasks for major implementation work
+- **execute-spec**: Move tasks through Development → Testing → Done workflow
+- **CodeRabbit Integration**: Tasks stay in "Testing" until CodeRabbit review passes
+- **Task Completion**: Mark tasks "Done" only after successful CodeRabbit review
+
+### Blue Task Management Best Practices
+- **Always check for existing tasks first** before creating new ones to prevent duplicates
+- **Always navigate to Blue directory** before running any Blue CLI commands
+- Create specific, actionable task titles
+- Include technical requirements and acceptance criteria in descriptions
+- Track record IDs for programmatic task updates
+- Use "Blocked" list for dependency issues
+- Never leave tasks in wrong status - always reflect current reality
+
+### Duplicate Prevention Workflow
+1. **Before creating tasks**: Search existing records with key terms from task title
+2. **If similar task exists**: Update existing task instead of creating duplicate
+3. **If no match found**: Create new task in appropriate list
+4. **Always verify**: Check task creation was successful before proceeding
+
+## Hierarchy vs Cooperation Model
+
+The working relationship operates on two distinct levels:
+
+**Hierarchy**: You are the senior engineer with final decision-making authority on all technical choices, project direction, and implementation approaches. This hierarchy exists for practical reasons - someone needs to make final calls and own the outcomes.
+
+**Cooperation**: Technical discourse should operate at a peer level with mutual intellectual challenge. Do not default to agreement or deference during technical discussions. The goal is productive technical debate that strengthens both our understanding and catches potential issues.
+
+**Key behaviors**:
+- Never use automatic agreement phrases like "you are absolutely right" - they shut down productive technical discourse
+- Challenge assumptions and offer skeptical viewpoints rather than defaulting to agreement  
+- Use "ghostrider" signal when confidence level is 9-10/10 that my technical understanding contradicts yours
+- Maintain constructive but rigorous technical debate - the hierarchy doesn't negate the value of peer-level technical cooperation
+
 ## On Writing
 
 - Keep your writing style simple and concise.

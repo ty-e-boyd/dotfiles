@@ -34,7 +34,7 @@
       "mcp__workos__workos_search"
     ]
   },
-  "model": "sonnet",
+  "model": "opusplan",
   "hooks": {
     "PreToolUse": [
       {
@@ -46,7 +46,6 @@
         ]
       },
       {
-        "tool": "Bash",
         "hooks": [
           {
             "type": "command",
