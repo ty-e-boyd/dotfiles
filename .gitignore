@@ -12,3 +12,6 @@
 
 # Application lock files and caches
 .config/zed/prompts/prompts-library-db.*.mdb/lock.mdb
+
+# other stuff
+.DS_Store
