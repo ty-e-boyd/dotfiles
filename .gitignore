@@ -2,12 +2,13 @@
 .config/github-copilot/*
 
 # Claude Code cache and temporary files
-.claude/projects/
-.claude/todos/
-.claude/local/
-.claude/plugins/
-.claude/statsig/
-.claude/shell-snapshots/
+.claude/projects/*
+.claude/todos/*
+.claude/local/*
+.claude/plugins/*
+.claude/statsig/*
+.claude/shell-snapshots/*
+.claude/history.jsonl
 
 # Application lock files and caches
 .config/zed/prompts/prompts-library-db.*.mdb/lock.mdb
