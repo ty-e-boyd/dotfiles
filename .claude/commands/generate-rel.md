@@ -34,8 +34,9 @@ Generate a comprehensive GitHub release and update the resto-website releases.js
    - Navigate to /Users/tylerboyd/Development/restoration_apparel_company/resto-website/src/lib/data/releases.js
    - Add new release to appropriate section:
      - `websiteReleases` for resto-website
-     - `apiReleases` for resto-api  
+     - `apiReleases` for resto-api
      - `expressCreatorReleases` for express-creator
+     - `restoBaseReleases` for kb-chat-ui (displayed as "The Resto Base")
    - Follow existing structure with title, subtitle, tldr, and sections
    - Ensure helper functions are updated if needed
 
@@ -44,6 +45,7 @@ Generate a comprehensive GitHub release and update the resto-website releases.js
 - **express-creator**: /Users/tylerboyd/Development/restoration_apparel_company/express-creator
 - **resto-api**: /Users/tylerboyd/Development/restoration_apparel_company/resto-api
 - **resto-website**: /Users/tylerboyd/Development/restoration_apparel_company/resto-website
+- **kb-chat-ui**: /Users/tylerboyd/Development/restoration_apparel_company/kb-chatbot-ui
 
 ## Validation Steps
 

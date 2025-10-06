@@ -9,6 +9,7 @@
 .claude/statsig/*
 .claude/shell-snapshots/*
 .claude/history.jsonl
+.claude/*
 
 # Application lock files and caches
 .config/zed/prompts/prompts-library-db.*.mdb/lock.mdb

@@ -25,14 +25,17 @@ return {
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
             -- lua
-            lspconfig.lua_ls.setup({
+            vim.lsp.config('lua_ls', {
+                cmd = { 'lua-language-server' },
                 capabilities = capabilities,
+                root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
             })
 
             -- typescript/javascript
-            lspconfig.ts_ls.setup({
+            vim.lsp.config('ts_ls', {
+                cmd = { 'typescript-language-server', '--stdio' },
                 capabilities = capabilities,
-                root_dir = lspconfig.util.root_pattern("package.json"),
+                root_markers = { 'package.json' },
                 filetypes = {
                     "typescript",
                     "typescriptreact",
@@ -44,13 +47,17 @@ return {
             })
 
             -- tailwindcss
-            lspconfig.tailwindcss.setup({
+            vim.lsp.config('tailwindcss', {
+                cmd = { 'tailwindcss-language-server', '--stdio' },
                 capabilities = capabilities,
+                root_markers = { 'tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.mjs', 'tailwind.config.ts' },
             })
 
             -- ruby/rails - solargraph
-            lspconfig.solargraph.setup({
+            vim.lsp.config('solargraph', {
+                cmd = { 'solargraph', 'stdio' },
                 capabilities = capabilities,
+                root_markers = { 'Gemfile', '.git' },
                 settings = {
                     solargraph = {
                         diagnostics = true
@@ -58,32 +65,53 @@ return {
                 }
             })
 
-
             -- gopls
-            lspconfig.gopls.setup({
+            vim.lsp.config('gopls', {
+                cmd = { 'gopls' },
                 capabilities = capabilities,
+                root_markers = { 'go.work', 'go.mod', '.git' },
             })
 
             -- svelte
-            lspconfig.svelte.setup({
+            vim.lsp.config('svelte', {
+                cmd = { 'svelteserver', '--stdio' },
                 capabilities = capabilities,
+                root_markers = { 'package.json', '.git' },
             })
 
             -- docker
-            lspconfig.dockerls.setup({
+            vim.lsp.config('dockerls', {
+                cmd = { 'docker-langserver', '--stdio' },
                 capabilities = capabilities,
+                root_markers = { 'Dockerfile' },
             })
 
             -- zig
-            lspconfig.zls.setup({
+            vim.lsp.config('zls', {
+                cmd = { 'zls' },
                 capabilities = capabilities,
+                root_markers = { 'zls.json', 'build.zig', '.git' },
             })
             vim.g.zig_fmt_autosave = 0
 
             -- deno
-            lspconfig.denols.setup({
+            vim.lsp.config('denols', {
+                cmd = { 'deno', 'lsp' },
                 capabilities = capabilities,
-                root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+                root_markers = { 'deno.json', 'deno.jsonc' },
+            })
+
+            -- Enable all configs
+            vim.lsp.enable({
+                'lua_ls',
+                'ts_ls',
+                'tailwindcss',
+                'solargraph',
+                'gopls',
+                'svelte',
+                'dockerls',
+                'zls',
+                'denols',
             })
         end,
     },

@@ -1,5 +1,9 @@
-theme = "nord"
-font-size = 14
+theme = Adwaita Dark
+font-size = 15
+font-family = JetBrainsMono Nerd Font Mono
 
-cursor-style = "block"
+cursor-style = block
 cursor-style-blink = true
+
+window-padding-x = 16
+window-padding-y = 16
